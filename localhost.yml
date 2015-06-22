@@ -51,8 +51,8 @@
       shell: sbtenv install sbt-{{ sbt_version }} && sbtenv global sbt-{{ sbt_version }} creates=~/.sbtenv/versions/sbt-{{ sbt_version }}
 
     - name: export playenv
-      shell: echo 'export PATH="${HOME}/.playenv/bin:${PATH}"' >> ~/.zshrc && echo 'eval "$(playenv init -)"' >> ~/.zshrc creates=~/.playenv
+      shell: echo 'export PATH="${HOME}/.playenv/bin:${PATH}"' >> ~/.zshrc && echo 'eval "$(playenv init -)"' >> ~/.zshrc && source ~/.zshrc creates=~/.playenv
     - name: git clone git://github.com/mazgi/playenv.git ~/.playenv
       git: repo=git://github.com/mazgi/playenv.git dest=~/.playenv accept_hostkey=yes
     - name: install playenv
-      shell: source ~/.zshrc && playenv install play-{{ play_version }} && playenv global play-{{ play_version }} creates=~/.playenv/versions/play-{{ play_version }}
+      shell: playenv install play-{{ play_version }} && playenv global play-{{ play_version }} creates=~/.playenv/versions/play-{{ play_version }}
