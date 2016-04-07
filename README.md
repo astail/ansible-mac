@@ -1,5 +1,8 @@
 # ansible-mac
 
+[![Circle CI](https://circleci.com/gh/astail/ansible-mac/tree/master.svg?style=svg)](https://circleci.com/gh/astail/ansible-mac/tree/master)
+
+
 homebrewとansibleとzshをインストールする。
 
 ```
@@ -16,3 +19,4 @@ ansibleを流すと環境ができる。
 ```
 $ HOMEBREW_CASK_OPTS="--appdir=/Applications" ansible-playbook -i hosts localhost.yml && source ~/.zshrc
 ```
+

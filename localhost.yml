@@ -57,3 +57,4 @@
       git: repo=git://github.com/mazgi/playenv.git dest=~/.playenv accept_hostkey=yes
     - name: install playenv
       shell: ~/.playenv/bin/playenv install play-{{ play_version }} && ~/.playenv/bin/playenv global play-{{ play_version }} creates=~/.playenv/versions/play-{{ play_version }}
+
