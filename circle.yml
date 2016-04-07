@@ -7,3 +7,4 @@ dependencies:
 test:
   override:
     - ansible-playbook -i hosts localhost.yml --syntax-check
+
