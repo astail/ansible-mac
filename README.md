@@ -1,5 +1,8 @@
 # ansible-mac
 
+[![Circle CI](https://circleci.com/gh/astail/ansible-mac/tree/master.svg?style=svg)](https://circleci.com/gh/astail/ansible-mac/tree/master)
+
+
 homebrewとansibleとzshをインストールする。
 
 ```

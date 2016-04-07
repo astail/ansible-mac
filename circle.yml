@@ -1,0 +1,9 @@
+dependencies:
+  pre:
+    - pip install ansible
+  override:
+    - ansible --version
+
+test:
+  override:
+    - ansible-playbook -i hosts localhost.yml --syntax-check
