@@ -23,6 +23,8 @@
         - vagrant
         - slack
         - skype
+        - thunderbird
+        - firefox
 
     - homebrew: name={{ item.name }} state={{ item.state|default("latest") }} install_options={{ item.install_options|default() }}
       with_items:
