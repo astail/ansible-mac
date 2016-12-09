@@ -3,35 +3,35 @@
 - hosts: localhost
   connection: local
   gather_facts: no
-
-  vars:
-    homebrew_packages_taps:
-      - homebrew/binary
-      - homebrew/dupes
-      - caskroom/versions
-    homebrew_packages_packages:
-      - { name: zsh }
-      - { name: lua }
-      - { name: vim, install_options: with-lua }
-      - { name: wget }
-      - { name: tmux }
-      - { name: scala }
-      - { name: sbt }
-    homebrew_cask_packages_packages:
-      - java7
-      - java8
-      - google-chrome
-      - virtualbox
-      - vagrant
-
   tasks:
-    - homebrew_tap: tap={{ item }} state=present
-      with_items: homebrew_packages_taps
-    - homebrew: update_homebrew=yes
-    - homebrew: name={{ item.name }} state={{ item.state|default("latest") }} install_options={{ item.install_options|default() }}
-      with_items: homebrew_packages_packages
+    - name: install homebrew tap
+      homebrew_tap: name={{ item }} state=present
+      with_items: 
+        - homebrew/binary
+        - homebrew/dupes
+        - caskroom/versions
 
-    - homebrew_tap: tap=caskroom/cask state=present
-    - homebrew: name=brew-cask state=latest
-    - homebrew_cask: name={{ item }} state=installed
-      with_items: homebrew_cask_packages_packages
+    - name: homebrew_tap caskroom/cask
+      homebrew_tap: name=caskroom/cask
+
+    - name: homebrew_cask install item
+      homebrew_cask: name={{ item }}
+      with_items:
+        - java7
+        - google-chrome
+        - virtualbox
+        - vagrant
+        - slack
+        - skype
+
+    - homebrew: name={{ item.name }} state={{ item.state|default("latest") }} install_options={{ item.install_options|default() }}
+      with_items:
+        - { name: zsh }
+        - { name: lua }
+        - { name: vim, install_options: with-lua }
+        - { name: wget }
+        - { name: tmux }
+        - { name: sbt }
+
+    - name: copy gitconfig
+      copy: src=gitconfig dest=~/.gitconfig
