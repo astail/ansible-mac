@@ -5,9 +5,6 @@
   gather_facts: no
 
   vars:
-    scala_version: 2.10.4
-    sbt_version: 0.12.4
-    play_version: 2.1.5
     homebrew_packages_taps:
       - homebrew/binary
       - homebrew/dupes
@@ -16,11 +13,13 @@
       - { name: zsh }
       - { name: lua }
       - { name: vim, install_options: with-lua }
-      - { name: mysql }
       - { name: wget }
       - { name: tmux }
+      - { name: scala }
+      - { name: sbt }
     homebrew_cask_packages_packages:
       - java7
+      - java8
       - google-chrome
       - virtualbox
       - vagrant
@@ -36,25 +35,3 @@
     - homebrew: name=brew-cask state=latest
     - homebrew_cask: name={{ item }} state=installed
       with_items: homebrew_cask_packages_packages
-
-    - name: export scalaenv
-      shell: echo 'export PATH="${HOME}/.scalaenv/bin:${PATH}"' >> ~/.zshrc && echo 'eval "$(scalaenv init -)"' >> ~/.zshrc creates=~/.scalaenv
-    - name: git clone git://github.com/mazgi/scalaenv.git
-      git: repo=git://github.com/mazgi/scalaenv.git dest=~/.scalaenv accept_hostkey=yes
-    - name: install scala
-      shell: ~/.scalaenv/bin/scalaenv install scala-{{ scala_version }} && ~/.scalaenv/bin/scalaenv global scala-{{ scala_version }} creates=~/.scalaenv/versions/scala-{{ scala_version }}
-
-    - name: export sbtenv
-      shell: echo 'export PATH="${HOME}/.sbtenv/bin:${PATH}"' >> ~/.zshrc && echo 'eval "$(sbtenv init -)"' >> ~/.zshrc creates=~/.sbtenv
-    - name: git clone git://github.com/mazgi/sbtenv.git ~/.sbtenv
-      git: repo=git://github.com/mazgi/sbtenv.git dest=~/.sbtenv accept_hostkey=yes
-    - name: install sbtenv
-      shell: ~/.sbtenv/bin/sbtenv install sbt-{{ sbt_version }} && ~/.sbtenv/bin/sbtenv global sbt-{{ sbt_version }} creates=~/.sbtenv/versions/sbt-{{ sbt_version }}
-
-    - name: export playenv
-      shell: echo 'export PATH="${HOME}/.playenv/bin:${PATH}"' >> ~/.zshrc && echo 'eval "$(playenv init -)"' >> ~/.zshrc creates=~/.playenv
-    - name: git clone git://github.com/mazgi/playenv.git ~/.playenv
-      git: repo=git://github.com/mazgi/playenv.git dest=~/.playenv accept_hostkey=yes
-    - name: install playenv
-      shell: ~/.playenv/bin/playenv install play-{{ play_version }} && ~/.playenv/bin/playenv global play-{{ play_version }} creates=~/.playenv/versions/play-{{ play_version }}
-
