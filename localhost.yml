@@ -35,6 +35,13 @@
         - { name: wget }
         - { name: tmux }
         - { name: sbt }
+        - { name: doxygen }
+        - { name: rbenv }
+        - { name: rbenv-gemset }
 
     - name: copy gitconfig
       copy: src=gitconfig dest=~/.gitconfig
+
+    - name: gem install bundler
+      gem: name=bundler user_install=False
+      become: true
