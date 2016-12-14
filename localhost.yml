@@ -28,6 +28,7 @@
         - thunderbird
         - firefox
         - vlc
+        - sublime-text2
 
     - homebrew: name={{ item.name }} state={{ item.state|default("latest") }} install_options={{ item.install_options|default() }}
       with_items:
