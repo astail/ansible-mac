@@ -1,4 +1,5 @@
 alias sl='ls'
+alias rmfavicon='rm /Users/astel/Library/Application\ Support/Google/Chrome/Default/Favicons'
 alias grm='git rm `git ls-files --deleted`'
 alias ll='ls -lah'
 alias tenki='curl -4 wttr.in/Tokyo'
