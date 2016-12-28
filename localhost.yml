@@ -31,7 +31,6 @@
         - sublime-text2
         - minecraft
 
-
     - homebrew: name={{ item }}
       with_items:
         - zsh
@@ -43,6 +42,7 @@
         - tree
         - npm
         - nmap
+        - htop
 
     - homebrew: name={{ item.name }} state={{ item.state|default("latest") }} install_options={{ item.install_options|default() }}
       with_items:
