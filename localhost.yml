@@ -31,16 +31,22 @@
         - sublime-text2
         - minecraft
 
+
+    - homebrew: name={{ item }}
+      with_items:
+        - zsh
+        - lua
+        - wget
+        - tmux
+        - sbt
+        - doxygen
+        - tree
+        - npm
+        - nmap
+
     - homebrew: name={{ item.name }} state={{ item.state|default("latest") }} install_options={{ item.install_options|default() }}
       with_items:
-        - { name: zsh }
-        - { name: lua }
         - { name: vim, install_options: with-lua }
-        - { name: wget }
-        - { name: tmux }
-        - { name: sbt }
-        - { name: doxygen }
-        - { name: tree }
 
     - name: copy gitconfig
       copy: src=gitconfig dest=~/.gitconfig
