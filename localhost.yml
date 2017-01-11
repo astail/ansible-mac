@@ -38,6 +38,7 @@
         - wget
         - tmux
         - sbt
+        - jq
         - doxygen
         - tree
         - npm
