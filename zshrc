@@ -5,6 +5,8 @@ alias ll='ls -lah'
 alias tenki='curl -4 wttr.in/Tokyo'
 ALS() { ls ./roles/*/tasks/main.yml| awk '{print "echo " $1 "; cat -n " $1}' | sh | less }
 AALS() { ls ~/git/ansible/centos6/roles/*/tasks/main.yml| awk '{print "echo " $1 "; cat -n " $1}' | sh | less }
+alias mysql='/usr/local/Cellar/mysql/5.7.17/bin/mysql'
+alias service='(){ $1.server $2 }'
 
 
 #自動補完
@@ -54,9 +56,12 @@ function setjdk() {
 function removeFromPath() {
   export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
 }
-setjdk 1.7
+setjdk 1.8
 
-ssh-add ~/.ssh/id_astail
+
+if [ -e ~/.ssh/id_astail ]; then
+  ssh-add ~/.ssh/id_astail
+fi
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"

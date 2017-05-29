@@ -19,7 +19,7 @@
     - name: homebrew_cask install item
       homebrew_cask: name={{ item }}
       with_items:
-        - java7
+        - java
         - google-chrome
         - virtualbox
         - vagrant
