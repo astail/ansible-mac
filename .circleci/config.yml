@@ -1,0 +1,12 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:2.7-stretch
+    steps:
+      - checkout
+
+      - run: sudo apt-get install libyaml-dev
+      - run: sudo pip install ansible
+      - run: ansible --version
+      - run: ansible-playbook -i hosts localhost.yml --syntax-check
