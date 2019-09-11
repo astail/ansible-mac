@@ -8,7 +8,6 @@ AALS() { ls ~/git/ansible/centos6/roles/*/tasks/main.yml| awk '{print "echo " $1
 alias mysql='/usr/local/Cellar/mysql/5.7.17/bin/mysql'
 alias service='(){ $1.server $2 }'
 
-
 #自動補完
 autoload -Uz compinit
 compinit
@@ -31,33 +30,6 @@ zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
 
 autoload colors
 colors
-
-
-java7() {
-  setjdk 1.7;
-  java $@
-}
-
-java8() {
-  setjdk 1.8;
-  java $@
-}
-
-function setjdk() {
-  if [ $# -ne 0 ]; then
-    removeFromPath '/System/Library/Frameworks/JavaVM.framework/Home/bin'
-    if [ -n "${JAVA_HOME+x}" ]; then
-    removeFromPath $JAVA_HOME
-    fi
-    export JAVA_HOME=`/usr/libexec/java_home -v $@`
-    export PATH=$JAVA_HOME/bin:$PATH
-  fi
-}
-function removeFromPath() {
-  export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
-}
-setjdk 1.8
-
 
 if [ -e ~/.ssh/id_astail ]; then
   ssh-add ~/.ssh/id_astail
