@@ -3,7 +3,6 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/ansible-mac
     docker:
       - image: circleci/python:2.7-stretch
     steps:
