@@ -53,9 +53,22 @@ $ brew doctor
 ```
 
 
+
 ```
-$ brew install ansible
+$ pip3 install ansible 
 ```
+
+pip3アップデートしないとansibleインストールできなかった
+```
+/Library/Developer/CommandLineTools/usr/bin/python3 -m pip install --upgrade pip
+```
+
+```
+$ export PATH="${PATH}:/Users/astel/Library/Python/3.8/bin"
+$ ansible --version
+ansible [core 2.13.2]
+```
+
 
 java(Amazon Corretto 8等)をインストールしておく。(brew install sbtでこける)
 
