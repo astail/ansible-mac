@@ -17,6 +17,9 @@
           - jq
           - gnu-sed
           - shellcheck
+          - zsh-autosuggestions
+          - zsh-syntax-highlighting
+          - peco
 
     - name: git clone https://github.com/VundleVim/Vundle.vim.git
       git:
