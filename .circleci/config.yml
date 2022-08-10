@@ -6,7 +6,7 @@ jobs:
     steps:
       - checkout
       - run: python --version
-      - run: sudo apt-get install libyaml-dev
-      - run: sudo pip install ansible
+      - run: pip3 install ansible ansible-lint
       - run: ansible --version
       - run: ansible-playbook -i hosts localhost.yml --syntax-check
+      - run: ansible-lint localhost.yml
