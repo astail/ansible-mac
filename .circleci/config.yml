@@ -1,11 +1,12 @@
-version: 2
+version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/python:2.7-stretch
+      - image: cimg/python:3.8.13
     steps:
       - checkout
-      - run: sudo apt-get install libyaml-dev
-      - run: sudo pip install ansible
+      - run: python --version
+      - run: pip3 install ansible ansible-lint
       - run: ansible --version
       - run: ansible-playbook -i hosts localhost.yml --syntax-check
+      - run: ansible-lint localhost.yml
