@@ -55,7 +55,7 @@ $ brew doctor
 
 
 ```
-$ pip3 install ansible 
+$ pip3 install ansible ansible-lint
 ```
 
 pip3アップデートしないとansibleインストールできなかった
