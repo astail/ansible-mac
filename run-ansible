@@ -1,3 +1,4 @@
 #!/bin/sh
 
-ansible-playbook -i hosts localhost.yml --ask-vault-pass -K
+export PATH="${PATH}:/Users/astel/Library/Python/3.8/bin"
+ansible-playbook -i hosts localhost.yml --ask-vault-pass
