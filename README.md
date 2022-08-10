@@ -75,5 +75,5 @@ java(Amazon Corretto 8等)をインストールしておく。(brew install sbt�
 ansibleを流すと環境ができる。
 
 ```
-$ ansible-playbook -i hosts localhost.yml --ask-vault-pass -K
+$ ./run-ansible
 ```
