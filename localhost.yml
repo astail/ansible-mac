@@ -3,25 +3,19 @@
 - hosts: localhost
   connection: local
   gather_facts: no
-  vars:
-    - ruby_version: 2.2.6
   tasks:
     - name: install brew
       homebrew:
         name:
-          - zsh
-          - lua
           - wget
           - tmux
           - sbt
           - jq
-          - doxygen
           - tree
-          - npm
-          - nmap
           - htop
           - awscli
           - jq
+          - gnu-sed
 
     - name: copy gitconfig
       copy:
@@ -32,26 +26,3 @@
       copy:
         src: zshrc
         dest: ~/.zshrc
-
-    - name: git clone git@github.com:rbenv/rbenv.git ~/rbenv
-      git:
-        repo: https://github.com/rbenv/rbenv.git
-        dest: ~/.rbenv
-        accept_hostkey: yes
-
-    - name: git clone git@github.com:rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-      git:
-        repo: https://github.com/rbenv/ruby-build.git
-        dest: ~/.rbenv/plugins/ruby-build
-        accept_hostkey: yes
-
-    - name: ruby install {{ ruby_version }}
-      shell: export PATH="$HOME/.rbenv/bin:$PATH" && eval "$(rbenv init -)" && rbenv install {{ ruby_version }} && rbenv global {{ ruby_version }} && rbenv rehash
-      args:
-        creates: "~/.rbenv/versions/{{ ruby_version }}"
-
-    - name: gem install bundler
-      gem:
-        name: bundler
-        user_install: False
-      become: true
