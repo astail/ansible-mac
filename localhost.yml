@@ -16,6 +16,27 @@
           - awscli
           - jq
           - gnu-sed
+          - shellcheck
+          - zsh-autosuggestions
+          - zsh-syntax-highlighting
+          - peco
+
+    - name: git clone https://github.com/VundleVim/Vundle.vim.git
+      git:
+        repo: https://github.com/VundleVim/Vundle.vim.git
+        version: master
+        dest: ~/.vim/bundle/Vundle.vim
+        accept_hostkey: true
+
+    - name: copy vimrc
+      copy:
+        src: vimrc
+        dest: ~/.vimrc
+      register: vimrc
+
+    - name: vim +PluginInstall +qall
+      command: vim +PluginInstall +qall
+      when: vimrc is changed
 
     - name: copy gitconfig
       copy:
