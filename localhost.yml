@@ -21,6 +21,14 @@
           - zsh-syntax-highlighting
           - peco
 
+    - name: brew tap AdoptOpenJDK/openjdk
+      homebrew_tap:
+        name: AdoptOpenJDK/openjdk
+
+    - name: brew cask install adoptopenjdk/openjdk/adoptopenjdk11
+      homebrew_cask:
+        name: adoptopenjdk/openjdk/adoptopenjdk11
+
     - name: git clone https://github.com/VundleVim/Vundle.vim.git
       git:
         repo: https://github.com/VundleVim/Vundle.vim.git
