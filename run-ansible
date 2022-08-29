@@ -1,5 +1,0 @@
-#!/bin/sh
-
-export PATH="${PATH}:/Users/astel/Library/Python/3.8/bin"
-ansible-playbook -i hosts localhost.yml --ask-vault-pass
-git remote set-url origin git@github.com:astail/ansible-mac.git
