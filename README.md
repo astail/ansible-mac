@@ -70,10 +70,11 @@ ansible [core 2.13.2]
 ```
 
 
-java(Amazon Corretto 8等)をインストールしておく。(brew install sbtでこける)
-
-ansibleを流すと環境ができる。
+ansibleを流す
 
 ```
 $ ./run-ansible
 ```
+
+[Docker Desktop for Apple silicon](https://docs.docker.com/desktop/mac/apple-silicon/)
+[discord](https://discord.com/)
