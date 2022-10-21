@@ -21,6 +21,7 @@
           - zsh-syntax-highlighting
           - peco
           - imagemagick
+          - watch
 
     - name: brew tap AdoptOpenJDK/openjdk
       homebrew_tap:
