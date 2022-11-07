@@ -22,6 +22,7 @@
           - peco
           - imagemagick
           - watch
+          - node
 
     - name: brew tap AdoptOpenJDK/openjdk
       homebrew_tap:
